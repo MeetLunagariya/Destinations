@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
+import DeleteProgress from "./DeleteProgress";
 
+const TIMER = 3000;
 export default function DeleteConfirmation({ onConfirm, onCancel }) {
-  
   useEffect(() => {
     console.log("Timer set");
 
     const timer = setTimeout(() => {
       onConfirm();
       console.log("Timer fired");
-    }, 3000);
+    }, TIMER);
 
     return () => {
       console.log("Cleaning up timer");
@@ -28,6 +29,7 @@ export default function DeleteConfirmation({ onConfirm, onCancel }) {
           Yes
         </button>
       </div>
+      <DeleteProgress timer={TIMER} />
     </div>
   );
 }
